@@ -15,11 +15,43 @@ $TextConverted = "";
 // check language and translate in english
 if (isset($_POST['text'])) {
 
-    // get the language
+    // faire un appel curl pour savoir la langue
+    $curl = curl_init();
 
-    $lang = $translator->detect("mi nombre es jefs42");
-    $GlobalLanguage = $lang;
-    echo $GlobalLanguage."<br>";
+    curl_setopt_array($curl, [
+            CURLOPT_URL => "https://libretranslate.com/translate",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "q=". $_POST['text'] ."&source=auto&target=en",
+            CURLOPT_HTTPHEADER => [
+                "content-type: application/json",
+                "Accept-Encoding: application/gzip"
+            ],
+    ]);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    echo $response;
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        // get the result in json format and decode it
+        $result = json_decode($response, true);
+        // get the language
+        $language = $result['translatedText'];
+
+        $GlobalLanguage = $language;
+        echo $language."<br>";
+    }
 
     /*$curl = curl_init();
 

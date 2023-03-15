@@ -14,10 +14,10 @@ class LibreTranslate
     private $apiKey = '';
 
     /** @var string The API base URL */
-    private $apiBase = 'http://localhost';
+    private $apiBase = 'https://libretranslate.com/translate';
 
     /** @var int The port at apiBase to use   */
-    private $apiPort = 5000;
+    private $apiPort = 27345;
 
     /** @var string Local path to ltmanage, if available */
     private $LTManage = null;
