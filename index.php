@@ -1,15 +1,105 @@
 <?php
+
+$GlobalLanguage = "en";
+
+// check language and translate in english
+if (isset($_POST['text'])) {
+
+    // get the language
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://google-translate1.p.rapidapi.com/language/translate/v2/detect",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "q=". $_POST['text'],
+        CURLOPT_HTTPHEADER => [
+            "Accept-Encoding: application/gzip",
+            "X-RapidAPI-Host: google-translate1.p.rapidapi.com",
+            "X-RapidAPI-Key: 9fcafa241bmsh9ef7be5f7345bdap163994jsn1f27327b8419",
+            "content-type: application/x-www-form-urlencoded"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        // get the result in json format and decode it
+        $result = json_decode($response, true);
+        // get the language
+        $language = $result['data']['detections'][0][0]['language'].'<br>';
+
+        $GlobalLanguage = $language;
+
+        echo $language;
+    }
+
+
+
+    // translate the text
+    $curlTR = curl_init();
+
+    curl_setopt_array($curlTR, [
+        CURLOPT_URL => "https://google-translate1.p.rapidapi.com/language/translate/v2",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "q=". $_POST['text'] ."&source=".$GlobalLanguage."&target=en",
+        CURLOPT_HTTPHEADER => [
+            "Accept-Encoding: application/gzip",
+            "X-RapidAPI-Host: google-translate1.p.rapidapi.com",
+            "X-RapidAPI-Key: 9fcafa241bmsh9ef7be5f7345bdap163994jsn1f27327b8419",
+            "content-type: application/x-www-form-urlencoded"
+        ],
+    ]);
+
+    $responseTR = curl_exec($curlTR);
+    $errTR = curl_error($curlTR);
+
+    curl_close($curlTR);
+
+    if ($errTR) {
+        echo "cURL Error #:" . $errTR;
+    } else {
+        // get the result in json format and decode it
+        $resultTR = json_decode($responseTR, true);
+        // get the language
+        $text = $resultTR['data']['translations'][0]['translatedText'];
+
+        echo $text;
+    }
+
+}
+
 ?>
 
-// html classic code
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My first PHP page</title>
+    <title>Avali Scratch Translator</title>
 </head>
 <body>
-    <h1>My first PHP page</h1>
-    <?php echo "Hello World!"; ?>
+    <!-- Made a formular with text -->
+    <form action="index.php" method="post">
+        <textarea name="text" rows="10" cols="30"></textarea>
+        <input type="submit" value="Translate">
+    </form>
+
 </body>
 </html>
 
