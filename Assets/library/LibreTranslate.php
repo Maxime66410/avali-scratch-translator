@@ -17,7 +17,7 @@ class LibreTranslate
     private $apiBase = 'https://libretranslate.com/translate';
 
     /** @var int The port at apiBase to use   */
-    private $apiPort = 27345;
+    private $apiPort = 5000;
 
     /** @var string Local path to ltmanage, if available */
     private $LTManage = null;
