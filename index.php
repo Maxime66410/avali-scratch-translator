@@ -1,11 +1,6 @@
 <?php
 require_once("Assets/library/LibreTranslate.php");
 
-use Jefs42\LibreTranslate;
-
-$translator = new LibreTranslate();
-
-
 $GlobalLanguage = "en";
 $TextConverted = "";
 
