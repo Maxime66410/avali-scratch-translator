@@ -1,11 +1,17 @@
 <?php
+require_once("Assets/library/LibreTranslate.php");
+
+use Jefs42\LibreTranslate;
+
+$translator = new LibreTranslate();
+
 
 $GlobalLanguage = "en";
 $TextConverted = "";
 
 // check language and translate in english
 if (isset($_POST['text'])) {
-    
+
     // get the language
     /*$curl = curl_init();
 
