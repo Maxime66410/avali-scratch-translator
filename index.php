@@ -1,6 +1,14 @@
 <?php
 require_once("Assets/library/LibreTranslate.php");
 
+use Jefs42\LibreTranslate;
+
+$translator = new LibreTranslate();
+
+// Docs : https://github.com/jefs42/libretranslate
+
+//$translator->setTarget('en');
+
 $GlobalLanguage = "en";
 $TextConverted = "";
 
@@ -8,6 +16,11 @@ $TextConverted = "";
 if (isset($_POST['text'])) {
 
     // get the language
+
+    $lang = $translator->detect("mi nombre es jefs42");
+    $GlobalLanguage = $lang;
+    echo $GlobalLanguage."<br>";
+
     /*$curl = curl_init();
 
     curl_setopt_array($curl, [
