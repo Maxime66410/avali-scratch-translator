@@ -6,6 +6,12 @@ $TextConverted = "";
 // check language and translate in english
 if (isset($_POST['text'])) {
 
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+
+    ])
+
     // get the language
     /*$curl = curl_init();
 
