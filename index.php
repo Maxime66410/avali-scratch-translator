@@ -7,7 +7,7 @@ $TextConverted = "";
 if (isset($_POST['text'])) {
 
     // get the language
-    $curl = curl_init();
+    /*$curl = curl_init();
 
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://google-translate1.p.rapidapi.com/language/translate/v2/detect",
@@ -82,7 +82,7 @@ if (isset($_POST['text'])) {
 
         $TextConverted = $text;
         echo $text;
-    }
+    }*/
 
 }
 
