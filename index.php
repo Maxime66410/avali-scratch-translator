@@ -1,12 +1,13 @@
 <?php
 
 $GlobalLanguage = "en";
+$TextConverted = "";
 
 // check language and translate in english
 if (isset($_POST['text'])) {
 
     // get the language
-    $curl = curl_init();
+   /* $curl = curl_init();
 
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://google-translate1.p.rapidapi.com/language/translate/v2/detect",
@@ -37,11 +38,10 @@ if (isset($_POST['text'])) {
         // get the result in json format and decode it
         $result = json_decode($response, true);
         // get the language
-        $language = $result['data']['detections'][0][0]['language'].'<br>';
+        $language = $result['data']['detections'][0][0]['language'];
 
         $GlobalLanguage = $language;
-
-        echo $language;
+        echo $language."<br>";
     }
 
 
@@ -80,10 +80,11 @@ if (isset($_POST['text'])) {
         // get the language
         $text = $resultTR['data']['translations'][0]['translatedText'];
 
+        $TextConverted = $text;
         echo $text;
     }
 
-}
+}*/
 
 ?>
 
@@ -92,6 +93,8 @@ if (isset($_POST['text'])) {
 <html>
 <head>
     <title>Avali Scratch Translator</title>
+    <!-- Made by Maxime6610 -->
+    <link rel="stylesheet" type="text/css" href="Assets/css/main.css">
 </head>
 <body>
     <!-- Made a formular with text -->
@@ -100,6 +103,7 @@ if (isset($_POST['text'])) {
         <input type="submit" value="Translate">
     </form>
 
+    <?php echo "<p class='avalifont'>".$TextConverted."</p>"; ?>
 </body>
 </html>
 

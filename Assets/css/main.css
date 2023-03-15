@@ -1,0 +1,8 @@
+@font-face {
+    font-family: AvaliFont;
+    src: url(../fonts/avali-scratch.otf);
+}
+
+.avalifont {
+    font-family: AvaliFont;
+}
