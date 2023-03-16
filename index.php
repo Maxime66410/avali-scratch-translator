@@ -6,6 +6,7 @@ use Jefs42\LibreTranslate;
 use \Statickidz\GoogleTranslate;
 
 $translator = new LibreTranslate();
+$trans = new GoogleTranslate();
 
 // Docs : https://github.com/jefs42/libretranslate
 
@@ -14,19 +15,20 @@ $translator = new LibreTranslate();
 $GlobalLanguage = "en";
 $TextConverted = "";
 
+
 // check language and translate in english
 if (isset($_POST['text'])) {
 
     // faire un appel curl pour savoir la langue
 
-    $source = 'fr';
+    $source = 'es';
     $text = $_POST['text'];
 
-    $trans = new GoogleTranslate();
+    $resultLang = $trans->getTextLanguage($text, $text);
     $result = $trans->translate($source, $GlobalLanguage, $text);
 
 // Good morning
-    echo $result;
+    echo $resultLang;
 
     /*$curl = curl_init();
 
