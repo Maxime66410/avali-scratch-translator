@@ -1,7 +1,9 @@
 <?php
 require_once("Assets/library/LibreTranslate.php");
+require_once ("Assets/library/GoogleTranslate.php");
 
 use Jefs42\LibreTranslate;
+use \Statickidz\GoogleTranslate;
 
 $translator = new LibreTranslate();
 
@@ -16,7 +18,15 @@ $TextConverted = "";
 if (isset($_POST['text'])) {
 
     // faire un appel curl pour savoir la langue
-    
+
+    $source = 'fr';
+    $text = $_POST['text'];
+
+    $trans = new GoogleTranslate();
+    $result = $trans->translate($source, $GlobalLanguage, $text);
+
+// Good morning
+    echo $result;
 
     /*$curl = curl_init();
 
