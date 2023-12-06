@@ -21,14 +21,14 @@ if (isset($_POST['text'])) {
 
     // faire un appel curl pour savoir la langue
 
-    $source = 'es';
+    /*$source = 'es';
     $text = $_POST['text'];
 
     $resultLang = $trans->getTextLanguage($text, $text);
-    $result = $trans->translate($source, $GlobalLanguage, $text);
+    $result = $trans->translate($source, $GlobalLanguage, $text);*/
 
 // Good morning
-    echo "<p class='avalifont'>".$result."</p>";
+    echo "<p class='avalifont'>".$_POST['text']."</p>";
 	
 
     /*$curl = curl_init();
