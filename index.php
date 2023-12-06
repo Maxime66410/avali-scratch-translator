@@ -28,9 +28,8 @@ if (isset($_POST['text'])) {
     $result = $trans->translate($source, $GlobalLanguage, $text);
 
 // Good morning
-    echo $result;
+    echo "<p class='avalifont'>".$result."</p>";
 	
-	$TextConverted = $result;
 
     /*$curl = curl_init();
 
