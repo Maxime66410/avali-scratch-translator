@@ -127,7 +127,7 @@ if (isset($_POST['text'])) {
         <input type="submit" value="Translate">
     </form>
 
-    <p class='avalifont'><?php echo $TextConverted; ?></p>
+    <p class='avalifont'><?php if (isset($_POST['text'])) {echo $_POST['text'];} ?></p>
 </body>
 </html>
 
