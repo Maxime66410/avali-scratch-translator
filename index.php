@@ -86,7 +86,7 @@ if (isset($_POST['text'])) {
         CURLOPT_HTTPHEADER => [
             "Accept-Encoding: application/gzip",
             "X-RapidAPI-Host: google-translate1.p.rapidapi.com",
-            "X-RapidAPI-Key: 9fcafa241bmsh9ef7be5f7345bdap163994jsn1f27327b8419",
+            "X-RapidAPI-Key: ",
             "content-type: application/x-www-form-urlencoded"
         ],
     ]);
@@ -121,11 +121,17 @@ if (isset($_POST['text'])) {
     <link rel="stylesheet" type="text/css" href="Assets/css/main.css">
 </head>
 <body>
+
+	<br>
+	
     <!-- Made a formular with text -->
     <form action="index.php" method="post">
         <textarea name="text" rows="10" cols="30"></textarea>
+		<br><br>
         <input type="submit" value="Translate">
     </form>
+	
+	<br>
 
     <p class='avalifont'><?php if (isset($_POST['text'])) {echo $_POST['text'];} ?></p>
 </body>
