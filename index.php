@@ -13,7 +13,7 @@ $trans = new GoogleTranslate();
 //$translator->setTarget('en');
 
 $GlobalLanguage = "en";
-$TextConverted = "";
+$TextConverted = "fr";
 
 
 // check language and translate in english
