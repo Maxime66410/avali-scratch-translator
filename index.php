@@ -13,7 +13,7 @@ $trans = new GoogleTranslate();
 //$translator->setTarget('en');
 
 $GlobalLanguage = "en";
-$TextConverted = "fr";
+$TextConverted = "";
 
 
 // check language and translate in english
@@ -28,7 +28,7 @@ if (isset($_POST['text'])) {
     $result = $trans->translate($source, $GlobalLanguage, $text);
 
 // Good morning
-    echo $resultLang;
+    echo '<p class="avalifont">'.$resultLang.'</p>';
 
     /*$curl = curl_init();
 
